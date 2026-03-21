@@ -5,6 +5,13 @@
     <PackageProjectUrl>https://github.com/goatcorp/StableChocobo</PackageProjectUrl>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <IsPackable>false</IsPackable>
+    <DalamudLibPath>C:\Users\jerdr\AppData\Roaming\XIVLauncher\addon\Hooks\dev\</DalamudLibPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="FFXIVClientStructs">
+        <HintPath>C:\Users\jerdr\AppData\Roaming\XIVLauncher\addon\Hooks\dev\FFXIVClientStructs.dll</HintPath>
+        <Private>false</Private>
+    </Reference>
+  </ItemGroup>
 </Project>

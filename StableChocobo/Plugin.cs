@@ -8,7 +8,7 @@ using StableChocobo.Windows;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.ClientState.Buddy;
-
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
 namespace StableChocobo;
 
 public sealed class Plugin : IDalamudPlugin
@@ -43,10 +43,20 @@ public sealed class Plugin : IDalamudPlugin
 
         AddonLifecycle.UnregisterListener(AddonEvent.PostSetup, "SelectString", OnStableOpen);
     }
-    private void OnStableOpen(AddonEvent type, AddonArgs args)
+    private unsafe void OnStableOpen(AddonEvent type, AddonArgs args)
     {
+        UIState* ui = UIState.Instance();
+        if (ui == null) return;
         Log.Information($"Addon opened: {args.AddonName}");
-        Log.Information($"CompanionBuddy: {BuddyList.CompanionBuddy}");
-        promptWindow.IsOpen = true;
+        Log.Information($"CompanionBuddy: {BuddyList.CompanionBuddy}, BuddyList length: {BuddyList.Length}");
+        var buddy = ui->Buddy.CompanionInfo;
+        uint objectId = buddy.Companion->EntityId;
+        bool isActive = objectId != 0xE0000000;
+        Log.Information($"ObjectId: {objectId}, IsActive: {isActive}");
+
+        if (buddy.TimeLeft > 0)
+        {
+            promptWindow.IsOpen = true;
+        }
     }
 }
