@@ -8,6 +8,7 @@ using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
+using Dalamud.Bindings.ImGui;
 namespace StableChocobo;
 
 public sealed class Plugin : IDalamudPlugin
@@ -16,6 +17,7 @@ public sealed class Plugin : IDalamudPlugin
     [PluginService] internal static IAddonLifecycle AddonLifecycle { get; private set; } = null!;
     [PluginService] internal static IPluginLog Log { get; private set; } = null!;
     [PluginService] internal static IGameGui GameGui { get; private set; } = null!;
+    [PluginService] internal static IFramework Framework { get; private set; } = null!;
 
     public readonly WindowSystem WindowSystem = new("StableChocobo");
     private ChocoboPromptWindow promptWindow;
@@ -25,7 +27,7 @@ public sealed class Plugin : IDalamudPlugin
         // Tell the UI system that we want our windows to be drawn through the window system
         PluginInterface.UiBuilder.Draw += WindowSystem.Draw;
 
-        promptWindow = new ChocoboPromptWindow();
+        promptWindow = new ChocoboPromptWindow(Framework);
         WindowSystem.AddWindow(promptWindow);
 
         Log.Information("StableChocobo loaded.");
