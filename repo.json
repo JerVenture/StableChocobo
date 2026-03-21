@@ -8,6 +8,7 @@
     "AssemblyVersion": "0.0.0.1",
     "TestingAssemblyVersion": "0.0.0.1",
     "RepoUrl": "https://github.com/JerVenture/StableChocobo",
+    "IconUrl": "https://raw.githubusercontent.com/JerVenture/StableChocobo/master/images/icon.png",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 14,
     "IsHide": "False",
