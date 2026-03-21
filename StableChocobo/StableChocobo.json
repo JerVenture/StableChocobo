@@ -10,5 +10,9 @@
     "Chocobos",
     "Chocobo Stable",
     "StableChocobo"
-  ]
+  ],
+  "DownloadLinkInstall": "https://github.com/JerVenture/StableChocobo/releases/download/v0.0.0.1/StableChocobo.zip",
+  "DownloadLinkUpdate": "https://github.com/JerVenture/StableChocobo/releases/download/v0.0.0.1/StableChocobo.zip",
+  "DownloadLinkTesting": "https://github.com/JerVenture/StableChocobo/releases/download/v0.0.0.1/StableChocobo.zip"
+  }
 }
