@@ -5,8 +5,8 @@
     "InternalName": "StableChocobo",
     "Punchline": "Basic plugin to detect if chocobo is summoned while trying to stable it.",
     "Description": "This plugin will populate a window as soon as you open a stable if your chocobo is currently summoned. It asks if you want to unsummon it. Upon clicking yes, it closes the chocobo stable and withdraws your chocobo.",
-    "AssemblyVersion": "0.0.0.1",
-    "TestingAssemblyVersion": "0.0.0.1",
+    "AssemblyVersion": "0.0.0.2",
+    "TestingAssemblyVersion": "0.0.0.2",
     "RepoUrl": "https://github.com/JerVenture/StableChocobo",
     "IconUrl": "https://raw.githubusercontent.com/JerVenture/StableChocobo/master/images/icon.png",
     "ApplicableVersion": "any",
@@ -14,11 +14,11 @@
     "IsHide": "False",
     "IsTestingExclusive": "False",
     "DownloadCount": 0,
-    "LastUpdate": 0,
+    "LastUpdate": 1774132451,
     "LoadPriority": 0,
     "Tags": ["Chocobos", "Chocobo Stable", "StableChocobo"],
-    "DownloadLinkInstall": "https://github.com/JerVenture/StableChocobo/releases/download/v0.0.0.1/StableChocobo.zip",
-    "DownloadLinkUpdate": "https://github.com/JerVenture/StableChocobo/releases/download/v0.0.0.1/StableChocobo.zip",
-    "DownloadLinkTesting": "https://github.com/JerVenture/StableChocobo/releases/download/v0.0.0.1/StableChocobo.zip"
+    "DownloadLinkInstall": "https://github.com/JerVenture/StableChocobo/releases/download/V0.0.0.2/StableChocobo.zip",
+    "DownloadLinkUpdate": "https://github.com/JerVenture/StableChocobo/releases/download/v0.0.0.2/StableChocobo.zip",
+    "DownloadLinkTesting": "https://github.com/JerVenture/StableChocobo/releases/download/v0.0.0.2/StableChocobo.zip"
   }
 ]
