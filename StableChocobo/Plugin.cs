@@ -7,6 +7,7 @@ using StableChocobo.Windows;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 namespace StableChocobo;
 
 public sealed class Plugin : IDalamudPlugin
@@ -45,6 +46,12 @@ public sealed class Plugin : IDalamudPlugin
         if (ui == null) return;
 
         var buddy = ui->Buddy.CompanionInfo;
+
+        var addon = (AtkUnitBase*)args.Addon.Address;
+        var textNode = (AtkTextNode*)addon->GetNodeById(2);
+        if (textNode == null) return;
+        var text = textNode->NodeText.ToString();
+        if (!text.Contains("Chocobos Stabled")) return;
 
         if (buddy.TimeLeft > 0)
         {
