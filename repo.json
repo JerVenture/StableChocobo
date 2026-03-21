@@ -1,5 +1,6 @@
 [
   {
+    "InternalName": "StableChocobo",
     "Author": "JerVenture",
     "Name": "StableChocobo",
     "Punchline": "Basic plugin to detect if chocobo is summoned while trying to stable it.",
