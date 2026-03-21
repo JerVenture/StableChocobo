@@ -1,27 +1,21 @@
 ﻿using Dalamud.Game.Command;
 using Dalamud.IoC;
 using Dalamud.Plugin;
-using System.IO;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
 using StableChocobo.Windows;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
-using Dalamud.Game.ClientState.Buddy;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 namespace StableChocobo;
 
 public sealed class Plugin : IDalamudPlugin
 {
     [PluginService] internal static IDalamudPluginInterface PluginInterface { get; private set; } = null!;
-    [PluginService] internal static ICommandManager CommandManager { get; private set; } = null!;
-    [PluginService] internal static IClientState ClientState { get; private set; } = null!;
-    [PluginService] internal static IDataManager DataManager { get; private set; } = null!;
     [PluginService] internal static IAddonLifecycle AddonLifecycle { get; private set; } = null!;
     [PluginService] internal static IPluginLog Log { get; private set; } = null!;
-    [PluginService] internal static IBuddyList BuddyList { get; private set; } = null!;
     public readonly WindowSystem WindowSystem = new("StableChocobo");
-    public ChocoboPromptWindow promptWindow;
+    private ChocoboPromptWindow promptWindow;
 
     public Plugin()
     {
@@ -47,12 +41,8 @@ public sealed class Plugin : IDalamudPlugin
     {
         UIState* ui = UIState.Instance();
         if (ui == null) return;
-        Log.Information($"Addon opened: {args.AddonName}");
-        Log.Information($"CompanionBuddy: {BuddyList.CompanionBuddy}, BuddyList length: {BuddyList.Length}");
+
         var buddy = ui->Buddy.CompanionInfo;
-        uint objectId = buddy.Companion->EntityId;
-        bool isActive = objectId != 0xE0000000;
-        Log.Information($"ObjectId: {objectId}, IsActive: {isActive}");
 
         if (buddy.TimeLeft > 0)
         {
