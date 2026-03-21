@@ -2,14 +2,17 @@ using Dalamud.Interface.Windowing;
 using Dalamud.Bindings.ImGui;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using System;
 using Dalamud.Plugin.Services;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace StableChocobo.Windows;
 
+
+
 public class ChocoboPromptWindow : Window 
 {
+    private IFramework _framework;
 
     public unsafe override void Draw()
     {
@@ -29,9 +32,10 @@ public class ChocoboPromptWindow : Window
         IsOpen = false; // Closing the window
         unsafe
         {
-        var addon = Plugin.GameGui.GetAddonByName("SelectString");
-        if (!addon.IsNull) ((AtkUnitBase*)addon.Address)->Close(true);
+            var addon = Plugin.GameGui.GetAddonByName("SelectString");
+            if (!addon.IsNull) ((AtkUnitBase*)addon.Address)->Close(true);
         }
+        
         await Task.Delay(500); // Half a second delay
         _framework.RunOnTick(() =>
         {
@@ -44,11 +48,15 @@ public class ChocoboPromptWindow : Window
         });
     }
 
-    private IFramework _framework;
+
 
     public ChocoboPromptWindow(IFramework framework) : base("Stable Chocobo")
     {
         _framework = framework;
+        Size = new Vector2(400, 120);
+        SizeCondition = ImGuiCond.Appearing;        
+        Position = ImGui.GetMainViewport().GetCenter() - Size.Value / 2;
+        PositionCondition = ImGuiCond.Appearing;
     }
 }
 

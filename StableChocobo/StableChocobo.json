@@ -2,8 +2,10 @@
   "Author": "JerVenture",
   "Name": "StableChocobo",
   "Punchline": "Basic plugin to detect if chocobo is summoned while trying to stable it.",
-  "Description": "This plugin will populate a window as soon as you open a stable if your chocobo is currently summoned. It asks if you want to unsummon it. Upon clicking yes, it exists the chocobo stable and withdraws your chocobo.",
-  "ApplicableVersion": "any",
+  "Description": "This plugin will populate a window as soon as you open a stable if your chocobo is currently summoned. It asks if you want to unsummon it. Upon clicking yes, it closes the chocobo stable and withdraws your chocobo.",
+  "ApplicableVersion": "2026.03.07.0000.0000",
+  "RepoUrl": "https://github.com/JerVenture/StableChocobo/tree/master",
+  "DalamudApiLevel": 14,
   "Tags": [
     "Chocobos",
     "Chocobo Stable",

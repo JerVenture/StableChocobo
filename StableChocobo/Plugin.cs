@@ -1,5 +1,4 @@
-﻿using Dalamud.Game.Command;
-using Dalamud.IoC;
+﻿using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
@@ -8,7 +7,7 @@ using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Dalamud.Bindings.ImGui;
+
 namespace StableChocobo;
 
 public sealed class Plugin : IDalamudPlugin
@@ -24,8 +23,8 @@ public sealed class Plugin : IDalamudPlugin
 
     public Plugin()
     {
-        // Tell the UI system that we want our windows to be drawn through the window system
         PluginInterface.UiBuilder.Draw += WindowSystem.Draw;
+        PluginInterface.UiBuilder.OpenMainUi += () => promptWindow.IsOpen = true;
 
         promptWindow = new ChocoboPromptWindow(Framework);
         WindowSystem.AddWindow(promptWindow);
@@ -38,6 +37,7 @@ public sealed class Plugin : IDalamudPlugin
     public void Dispose()
     {
         PluginInterface.UiBuilder.Draw -= WindowSystem.Draw;
+        PluginInterface.UiBuilder.OpenMainUi -= () => promptWindow.IsOpen = true;
         WindowSystem.RemoveAllWindows();
 
         AddonLifecycle.UnregisterListener(AddonEvent.PostSetup, "SelectString", OnStableOpen);
